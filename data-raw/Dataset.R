@@ -1,3 +1,15 @@
 ## code to prepare `~/pkgGrpr/city_data.csv` dataset goes here
 
-usethis::use_data(~/pkgGrpr/city_data.csv, overwrite = TRUE)
+data <- readr::read_csv("city_day.csv")
+
+data <- data %>%
+  dplyr::filter(City %in% c("Delhi", "Hyderabad", "Lucknow",
+                     "Bengluru", "Chennai", "Ahmedabad",
+                     "Mumbai")) %>%
+  dplyr::select(-PM10, -NH3) %>%
+  dplyr::mutate(date = lubridate::ymd(Date))
+
+usethis::use_data(data, overwrite = TRUE)
+
+
+
