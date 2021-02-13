@@ -5,24 +5,40 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+The real shit begins
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+```{r}
+library(tidyverse)
+data <- read_csv("/home/adgadkari/pkgGrpr/city_day.csv")
 
-```{r cars}
-summary(cars)
+
+
+data %>%
+  group_by(City) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+
+data <- data %>%
+  filter(City %in% c("Delhi", "Hyderabad", "Lucknow",
+                     "Bengluru", "Chennai", "Ahmedabad",
+                     "Mumbai")) %>%
+  select(-PM10, -NH3)
+
+data %>%
+  group_by(City) %>%
+  count(is.na())
+
+
+data %>%
+  
+  group_by(City) %>%
+  summarise_all(funs(sum(!is.na(.))))
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
