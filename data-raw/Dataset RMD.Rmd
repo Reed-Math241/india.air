@@ -6,7 +6,7 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
+library(here)
 ```
 
 
@@ -14,7 +14,7 @@ The real shit begins
 
 ```{r}
 library(tidyverse)
-data <- read_csv("/home/adgadkari/pkgGrpr/city_day.csv")
+data <- read_csv(here("city_day.csv"))
 
 
 
