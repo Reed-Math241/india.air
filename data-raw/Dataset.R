@@ -7,7 +7,9 @@ data <- data %>%
                      "Bengluru", "Chennai", "Ahmedabad",
                      "Mumbai")) %>%
   dplyr::select(-PM10, -NH3) %>%
-  dplyr::mutate(date = lubridate::ymd(Date))
+  dplyr::mutate(date = lubridate::ymd(Date)) %>%
+  dplyr::rename(city = City, date = Date, benzene = Benzene,
+                toluene = Toluene, xylene = Xylene)
 
 usethis::use_data(data, overwrite = TRUE)
 
