@@ -1,8 +1,8 @@
 ## code to prepare `~/pkgGrpr/city_data.csv` dataset goes here
 
-install.packages(tidyverse)
+install.packages(magrittr)
 install.packages(lubridate)
-library(tidyverse)
+library(magrittr)
 library(lubridate)
 
 india_air <- readr::read_csv("city_day.csv")
