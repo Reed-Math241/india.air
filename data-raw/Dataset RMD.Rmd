@@ -1,5 +1,6 @@
 ---
 title: "Dataset RMD"
+author: Aditya, Olek, Lauren
 output: pdf_document
 ---
 
