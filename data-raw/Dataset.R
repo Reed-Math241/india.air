@@ -8,6 +8,7 @@ india_air <- india_air %>%
                      "Mumbai")) %>%
   dplyr::select(-PM10, -NH3) %>%
   dplyr::mutate(date = lubridate::ymd(Date)) %>%
+  dplyr::select(-Date) %>%
   dplyr::rename(city = City, benzene = Benzene,
                 toluene = Toluene, xylene = Xylene,
                 AQI_bucket = AQI_Bucket)
