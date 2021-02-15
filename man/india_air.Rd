@@ -7,19 +7,19 @@
 \format{
 A dataframe with 12051 rows and 14 variables:
 \describe{
-  \item{city}{a character denoting the city(character)(Delhi, Hyderabad, Lucknow,Bengluru, Chennai, Ahmedabad, Mumbai)}
-  \item{date}{a date variable for the date(date)}
-  \item{PM2.5}{particulate matter less than 2.5 micrometers in diameter.(numeric)(micrograms per meter cubed)}
-  \item{NO}{Nitrogen monoxide(numeric)(micrograms per meter cubed)}
-  \item{NO2}{Nitrogen Dioxide(numeric)(micrograms per meter cubed)}
-  \item{NOx}{Ntirous oxides(numeric)(micrograms per meter cubed)}
-  \item{CO}{Carbon monoxide(numeric)(milligrams per meter cubed)}
-  \item{SO2}{Sulfur dioxide(numeric)(micrograms per meter cubed)}
-  \item{O3}{Ozone(numeric)(micrograms per meter cubed)}
-  \item{benzene}{Benzene(numeric)(micrograms per meter cubed)}
-  \item{toluene}{Toluene(numeric)(micrograms per meter cubed)}
-  \item{xylene}{Xylene(numeric)(micrograms per meter cubed)}
-  \item{AQI}{Air Quality Index(numeric)}
+  \item{city}{City the measurement was taken in (character) (Delhi, Hyderabad, Lucknow, Bengluru, Chennai, Ahmedabad, Mumbai)}
+  \item{date}{Y-M-D date variable for the date (lubridate date)}
+  \item{PM2.5}{Concentration of particulate matter less than 2.5 micrometers in diameter (numeric), micrograms per meter cubed}
+  \item{NO}{Nitrogen monoxide concentration (numeric), micrograms per meter cubed}
+  \item{NO2}{Nitrogen Dioxide concentration (numeric), micrograms per meter cubed}
+  \item{NOx}{Ntirous oxides concentration (numeric), micrograms per meter cubed}
+  \item{CO}{Carbon monoxide concentration (numeric), milligrams per meter cubed}
+  \item{SO2}{Sulfur dioxide concentration (numeric), micrograms per meter cubed}
+  \item{O3}{Ozone concentration (numeric), micrograms per meter cubed}
+  \item{benzene}{Benzene concentration (numeric), micrograms per meter cubed}
+  \item{toluene}{Toluene concentration (numeric), micrograms per meter cubed}
+  \item{xylene}{Xylene concentration (numeric), micrograms per meter cubed}
+  \item{AQI}{Air Quality Index (numeric)}
   \item{AQI_bucket}{Description of AQI(character)(Severe, Very Poor, Poor, Moderate, Satisfactory, Good)}
 }
 }
@@ -36,6 +36,6 @@ A dataframe with 12051 rows and 14 variables:
 india_air
 }
 \description{
-Includes a variety of air pollution measurements by city and day.
+A variety of air pollution measurements by city and date across India for the years of 2015-2020. Not all measurements were collected in all cities on all days.
 }
 \keyword{datasets}
