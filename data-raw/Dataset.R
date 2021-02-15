@@ -1,5 +1,8 @@
 ## code to prepare `~/pkgGrpr/city_data.csv` dataset goes here
 
+install.packages(tidyverse)
+library(tidyverse)
+
 india_air <- readr::read_csv("city_day.csv")
 
 india_air <- india_air %>%
