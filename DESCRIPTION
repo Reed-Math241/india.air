@@ -1,13 +1,17 @@
-Package: pkgDemo
+Package: india.air
 Type: Package
 Title: India Air
 Version: 0.1.0
 Author: Aditya, Lauren, Olek
 Maintainer: Olek Wojcik <wojciko@reed.edu>
-Description: Data on air pollution in six Indian cities.
-License: Public Domain
+Description: Air pollution measurements in six Indian cities from 2015 to 2020, as reported by the Central Pollution Control Board (CPCB) of India.
+License: CC0
 Encoding: UTF-8
 LazyData: true
 Depends: 
-    R (>= 2.10)
+    R (>= 2.10),
+    magrittr,
+    readr,
+    dplyr,
+    lubridate
 RoxygenNote: 7.1.1
