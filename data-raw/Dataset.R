@@ -9,7 +9,8 @@ data <- data %>%
   dplyr::select(-PM10, -NH3) %>%
   dplyr::mutate(date = lubridate::ymd(Date)) %>%
   dplyr::rename(city = City, benzene = Benzene,
-                toluene = Toluene, xylene = Xylene)
+                toluene = Toluene, xylene = Xylene,
+                AQI_bucket = AQI_Bucket)
 
 usethis::use_data(data, overwrite = TRUE)
 
