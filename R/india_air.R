@@ -1,6 +1,6 @@
 #' Air pollutant measures in six Indian cities
 #'
-#' A variety of air pollution measurements by city and date across India for the years of 2015-2020. Not all measurements were collected in all cities on all days.
+#' A variety of air pollution measurements by city and date across India for the years of 2015-2020. Not all measurements were collected in all cities on all days. Public domain CC0.
 #'
 #' @format A dataframe with 12051 rows and 14 variables:
 #' \describe{
