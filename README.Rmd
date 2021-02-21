@@ -222,8 +222,25 @@ ggplot(data = india_air, mapping = aes(x = date,
 #subscript number for chemical formulas : \u208_ , replace underscore with desired number
 ```
 
+You can also easily produce summary stats of air pollution in India using `india.air`:
 
+```{r}
+#How many days in 2019 was each city's AQI higher than 100 (the maximum "satisfactory" AQI)?
+india_air %>%
+  filter(date >= mdy("1/1/2019") & date <= mdy("12/31/2019")) %>%
+  group_by(city) %>%
+  count(AQI > 100)
 
+#What was the average Ozone concentration in each city in 2019?
+india_air %>%
+  filter(date >= mdy("1/1/2019") & date <= mdy("12/31/2019")) %>%
+  group_by(city) %>%
+  summarise(meanO3 = mean(O3, na.rm = TRUE))
 
-
+#What was the average carbon monoxide concentration in each city in 2018?
+india_air %>%
+  filter(date >= mdy("1/1/2018") & date <= mdy("12/31/2018")) %>%
+  group_by(city) %>%
+  summarise(meanCO = mean(CO, na.rm = TRUE))
+```
 
