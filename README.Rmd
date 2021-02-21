@@ -34,7 +34,7 @@ devtools::install_github("Reed-Math241/pkgDemo")
 
 
 ```{r example}
-library(pkgDemo)
+library(india.air)
 ```
 
 ## Graphs

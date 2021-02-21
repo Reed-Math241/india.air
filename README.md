@@ -24,5 +24,26 @@ devtools::install_github("Reed-Math241/pkgDemo")
 ## Example
 
 ``` r
-library(pkgDemo)
+library(india.air)
 ```
+
+## Graphs
+
+``` r
+library(tidyverse)
+library(lubridate)
+library(RColorBrewer)
+library(viridis)
+```
+
+``` r
+# wranngling
+three_cities <- india_air %>%
+  filter(city %in% c("Mumbai",
+                     "Delhi",
+                     "Chennai"))
+```
+
+    #> Warning: Removed 4929 row(s) containing missing values (geom_path).
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
