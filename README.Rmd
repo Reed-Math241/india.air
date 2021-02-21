@@ -40,21 +40,23 @@ three_cities <- india_air %>%
 ```
 
 
-```{r, message=FALSE, echo=FALSE, warning=FALSE}
+```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.retina = 3}
 ggplot(data = three_cities, mapping = aes(x = date,
-                                       y = PM2.5,
-                                       color = city)) +
-  geom_line(size = 0.8,
+                                          y = PM2.5,
+                                          color = city)) +
+  geom_line(size = 0.7,
             alpha = 0.7) +
   xlim(mdy("1/1/2017"), mdy("12/31/2019")) +
   theme_minimal() +
   theme(legend.position = "top",
-        axis.title.x = element_blank()) +
+        axis.title.x = element_blank(),
+        legend.box.margin = margin(0, 0, 0, 0, "mm")) +
   scale_y_continuous(limits = c(0, 610),
-                     expand = c(0, 0)) +
+                     expand = c(0, 0),
+                     name = "PM2.5 (\u03BCg/m\u00b3)") +
   scale_color_brewer(palette = "Accent") +
   labs(color = "City",
-       title = "PM2.5 levels in three Indian cities 2017-2019")
+       title = "PM2.5 levels in three Indian cities, 2017-2019")
 ```
 
 
@@ -69,33 +71,155 @@ devtools::install_github("Reed-Math241/pkgGrpr")
 
 ## About the data
 
+This data was made available by the [Central Pollution Control Board of India](https://cpcb.nic.in/) and compiled by [Vopani on kaggle](https://www.kaggle.com/rohanrao/air-quality-data-in-india).
+
+The data is within the public domain under the CC-0 license.
+
+The package `india.air` contains one dataset, `india_air`. See `?india_air` for a description of each of the variables.
+
 ```{r}
 head(india_air)
 ```
 
-This data was made available by the [Central Pollution Control Board of India](https://cpcb.nic.in/) and compiled by [Vopani on kaggle](https://www.kaggle.com/rohanrao/air-quality-data-in-india).
-
-This data is within the public domain under the CC-0 license.
-
-## Visualization Examples
+The dataset contains air pollution data for six Indian cities between the years of 2015 and 2020 at the day level. Not all pollution measurements were collected in each city on each date, so there is some intrinsic missingness within the dataset.
 
 
-```{r, message=FALSE, echo=FALSE, warning=FALSE}
-ggplot(data = india_air, mapping = aes(x = date,
-                                       y = NOx,
-                                       color = city)) +
-  geom_line(size = 0.8,
-            alpha = 0.7) +
-  xlim(mdy("1/1/2019"), mdy("1/31/2019")) +
+## Examples
+
+`india.air` is great for visualizing patterns in air pollution over time. For example,
+
+```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.retina = 3}
+india_air %>%
+  filter(city == "Delhi") %>%
+ggplot(mapping = aes(x = date,
+                     y = NOx)) +
+  geom_line(size = 0.7,
+            alpha = 0.9,
+            color = "turquoise") +
   theme_minimal() +
   theme(legend.position = "top",
         axis.title.x = element_blank()) +
-  scale_y_continuous(limits = c(0, 200),
+  scale_y_continuous(limits = c(0, 210),
+                     expand = c(0, 0),
+                     name = "[NOx] (\u03BCg/m\u00b3)") +
+  scale_x_date(limits = c(mdy("1/1/2017"), mdy("12/31/2019"))) +
+  labs(title = "NOx concentrations in Delhi, 2017-2019")
+```
+
+```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.retina = 3}
+india_air %>%
+  filter(city == "Ahmedabad",
+         date >= mdy("1/1/2018") & date <= mdy("12/30/2018")) %>%
+ggplot(mapping = aes(x = date,
+                     y = AQI)) +
+  annotate("rect", xmin = mdy("12/31/2017"),      #AQI bucket "good"
+           xmax = mdy("12/31/2018"),
+           ymin = 0, ymax = 50,
+           alpha = 0.5, fill = "#009900") +
+  annotate("rect", xmin = mdy("12/31/2017"),      #AQI bucket "satisfactory"
+           xmax = mdy("12/31/2018"),
+           ymin = 50.1, ymax = 100,
+           alpha = 0.5, fill = "#669900") +
+  annotate("rect", xmin = mdy("12/31/2017"),      #AQI bucket "moderately polluted"
+           xmax = mdy("12/31/2018"),
+           ymin = 100.1, ymax = 200,
+           alpha = 0.5, fill = "#CC9900") +
+  annotate("rect", xmin = mdy("12/31/2017"),      #AQI bucket "poor"
+           xmax = mdy("12/31/2018"),
+           ymin = 200.1, ymax = 300,
+           alpha = 0.5, fill = "#996600") +
+  annotate("rect", xmin = mdy("12/31/2017"),      #AQI bucket "very poor"
+           xmax = mdy("12/31/2018"),
+           ymin = 300.1, ymax = 400,
+           alpha = 0.5, fill = "#663300") +
+  annotate("rect", xmin = mdy("12/31/2017"),      #AQI bucket "severe"
+           xmax = mdy("12/31/2018"),
+           ymin = 400.1, ymax = 2070,
+           alpha = 0.5, fill = "#330000") +
+  geom_line(size = 0.7,
+            alpha = 0.9,
+            color = "black") +
+  theme_minimal() +
+  theme(legend.position = "top",
+        axis.title.x = element_blank()) +
+  scale_y_continuous(expand = c(0, 0),
+                     name = "AQI") +
+  scale_x_date(expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  labs(title = "AQI in Ahmedabad, 2018") +
+  annotate("rect", xmin = mdy("7/9/2018"),                #background of key
+           xmax = mdy("10/13/2018"),
+           ymin = 1080, ymax = 1800,
+           fill = "white") +
+  annotate("text", x = mdy("8/27/2018"),
+           y = 1750, label = "AQI Bucket",
+           color = "grey20") +
+  annotate("rect", xmin = mdy("7/13/2018"),               #good
+           xmax = mdy("7/22/2018"),
+           ymin = 1610, ymax = 1680,
+           fill = "#009900", alpha = 0.5) +
+  annotate("text", x = mdy("8/7/2018"),
+           y = 1650, label = "Good", size = 3.5,
+           color = "grey20", family = "sans") +
+  annotate("rect", xmin = mdy("7/13/2018"),               #satisfactory
+           xmax = mdy("7/22/2018"),
+           ymin = 1510, ymax = 1580,
+           fill = "#669900", alpha = 0.5) +
+  annotate("text", x = mdy("8/20/2018"),
+           y = 1550, label = "Satisfactory", size = 3.5,
+           color = "grey20", family = "sans") +
+  annotate("rect", xmin = mdy("7/13/2018"),               #moderately polluted
+           xmax = mdy("7/22/2018"),
+           ymin = 1410, ymax = 1480,
+           fill = "#CC9900", alpha = 0.5) +
+  annotate("text", x = mdy("9/3/2018"),
+           y = 1450, label = "Moderately polluted", size = 3.5,
+           color = "grey20", family = "sans") +
+  annotate("rect", xmin = mdy("7/13/2018"),               #poor
+           xmax = mdy("7/22/2018"),
+           ymin = 1310, ymax = 1380,
+           fill = "#996600", alpha = 0.5) +
+  annotate("text", x = mdy("8/7/2018"),
+           y = 1350, label = "Poor", size = 3.5,
+           color = "grey20", family = "sans") +
+  annotate("rect", xmin = mdy("7/13/2018"),               #very poor
+           xmax = mdy("7/22/2018"),
+           ymin = 1210, ymax = 1280,
+           fill = "#663300", alpha = 0.5) +
+  annotate("text", x = mdy("8/15/2018"),
+           y = 1250, label = "Very poor", size = 3.5,
+           color = "grey20", family = "sans") +
+  annotate("rect", xmin = mdy("7/13/2018"),               #severe
+           xmax = mdy("7/22/2018"),
+           ymin = 1110, ymax = 1180,
+           fill = "#330000", alpha = 0.5) +
+  annotate("text", x = mdy("8/11/2018"),
+           y = 1150, label = "Severe", size = 3.5,
+           color = "grey20", family = "sans")
+```
+
+
+`india.air` is also great for comparing pollution among cities:
+
+```{r, message=FALSE, echo=FALSE, warning=FALSE}
+ggplot(data = india_air, mapping = aes(x = date,
+                                       y = PM2.5,
+                                       color = city)) +
+  geom_line(size = 0.7,
+            alpha = 0.7) +
+  xlim(mdy("12/1/2019"), mdy("12/31/2019")) +
+  theme_minimal() +
+  theme(legend.position = "top",
+        axis.title.x = element_blank()) +
+  scale_y_continuous(limits = c(0, 350),
                      expand = c(0, 0)) +
-  scale_color_brewer(palette = "Accent") +
+  scale_color_brewer(palette = "Dark2") +
   labs(color = "City",
-       title = "NOx levels in six Indian cities January 2019",
-       y = "NOx (ppm)")
+       title = "PM2.5 levels in six Indian cities, December 2019",
+       y = "PM2.5 (\u03BCg/m\u00b3)")
+
+#micrograms per meter cubed: \u03BCg/m\u00b3
+#subscript number for chemical formulas : \u208_ , replace underscore with desired number
 ```
 
 

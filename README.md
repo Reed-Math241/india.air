@@ -26,6 +26,15 @@ devtools::install_github("Reed-Math241/pkgGrpr")
 
 ## About the data
 
+This data was made available by the [Central Pollution Control Board of
+India](https://cpcb.nic.in/) and compiled by [Vopani on
+kaggle](https://www.kaggle.com/rohanrao/air-quality-data-in-india).
+
+The data is within the public domain under the CC-0 license.
+
+The package `india.air` contains one dataset, `india_air`. See
+`?india_air` for a description of each of the variables.
+
 ``` r
 head(india_air)
 #> # A tibble: 6 x 14
@@ -40,12 +49,20 @@ head(india_air)
 #> # … with 3 more variables: xylene <dbl>, AQI <dbl>, AQI_bucket <chr>
 ```
 
-This data was made available by the [Central Pollution Control Board of
-India](https://cpcb.nic.in/) and compiled by [Vopani on
-kaggle](https://www.kaggle.com/rohanrao/air-quality-data-in-india).
+The dataset contains air pollution data for six Indian cities between
+the years of 2015 and 2020 at the day level. Not all pollution
+measurements were collected in each city on each date, so there is some
+intrinsic missingness within the dataset.
 
-This data is within the public domain under the CC-0 license.
+## Examples
 
-## Visualization Examples
+`india.air` is great for visualizing patterns in air pollution over
+time. For example,
 
 <img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+
+`india.air` is also great for comparing pollution among cities:
+
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
