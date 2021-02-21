@@ -24,6 +24,10 @@ A dataframe with 12051 rows and 14 variables:
 }
 }
 \source{
+{Compiled public domain dataset from kaggle.com} \url{https://www.kaggle.com/rohanrao/air-quality-data-in-india}
+
+{Data extracted from the Central Pollution Control Board of India} \url{https://cpcb.nic.in/}
+
 {National Air Quality Standards in India as of 2009} \url{https://cpcb.nic.in/uploads/National_Ambient_Air_Quality_Standards.pdf}
 
 {National Air Quality Index Definitions} \url{https://cpcb.nic.in/displaypdf.php?id=bmF0aW9uYWwtYWlyLXF1YWxpdHktaW5kZXgvQWJvdXRfQVFJLnBkZg==}
@@ -36,6 +40,6 @@ A dataframe with 12051 rows and 14 variables:
 india_air
 }
 \description{
-A variety of air pollution measurements by city and date across India for the years of 2015-2020. Not all measurements were collected in all cities on all days.
+A variety of air pollution measurements by city and date across India for the years of 2015-2020. Not all measurements were collected in all cities on all days. Public domain CC0.
 }
 \keyword{datasets}
