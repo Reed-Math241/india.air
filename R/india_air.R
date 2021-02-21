@@ -5,11 +5,11 @@
 #' @format A dataframe with 12051 rows and 14 variables:
 #' \describe{
 #'   \item{city}{City the measurement was taken in (character) (Delhi, Hyderabad, Lucknow, Bengluru, Chennai, Ahmedabad, Mumbai)}
-#'   \item{date}{Y-M-D date variable for the date (lubridate date)}
+#'   \item{date}{Y-M-D date variable (date)}
 #'   \item{PM2.5}{Concentration of particulate matter less than 2.5 micrometers in diameter (numeric), micrograms per meter cubed}
 #'   \item{NO}{Nitrogen monoxide concentration (numeric), micrograms per meter cubed}
-#'   \item{NO2}{Nitrogen Dioxide concentration (numeric), micrograms per meter cubed}
-#'   \item{NOx}{Ntirous oxides concentration (numeric), micrograms per meter cubed}
+#'   \item{NO2}{Nitrogen dioxide concentration (numeric), micrograms per meter cubed}
+#'   \item{NOx}{Nitrous oxides concentration (numeric), micrograms per meter cubed}
 #'   \item{CO}{Carbon monoxide concentration (numeric), milligrams per meter cubed}
 #'   \item{SO2}{Sulfur dioxide concentration (numeric), micrograms per meter cubed}
 #'   \item{O3}{Ozone concentration (numeric), micrograms per meter cubed}
