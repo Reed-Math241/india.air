@@ -37,6 +37,43 @@ devtools::install_github("Reed-Math241/pkgDemo")
 library(pkgDemo)
 ```
 
+## Graphs
+
+```{r, message=FALSE}
+library(tidyverse)
+library(lubridate)
+library(RColorBrewer)
+library(viridis)
+```
+
+```{r}
+# wranngling
+three_cities <- india_air %>%
+  filter(city %in% c("Mumbai",
+                     "Delhi",
+                     "Chennai"))
+```
+
+
+```{r, message=FALSE, echo=FALSE}
+ggplot(data = three_cities, mapping = aes(x = date,
+                                       y = PM2.5,
+                                       color = city)) +
+  geom_line(size = 1,
+            alpha = 0.7) +
+  xlim(mdy("1/1/2019"), mdy("1/1/2020")) +
+  theme_minimal() +
+  theme(legend.position = "bottom",
+        axis.title.x = element_blank()) +
+  scale_y_continuous(limits = c(0, 610),
+                     expand = c(0, 0)) +
+  scale_color_brewer(palette = "Accent") +
+  labs(color = "City",
+       title = "PM2.5 Levels in Chennai, Delhi, and Mumbai during 2019")
+```
+
+
+
 
 
 
