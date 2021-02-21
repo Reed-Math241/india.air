@@ -22,25 +22,14 @@ knitr::opts_chunk$set(
 
 The goal of `india.air` is to make Indian air pollution data easily available for analysis and visualization in R.
 
-## Installation
-
-The development version of XXX is available from [GitHub](https://github.com/) with:
-
-```{r, eval=FALSE}
-# install.packages("devtools")
-devtools::install_github("Reed-Math241/pkgGrpr")
-```
-
-
-## Graphs
-
-```{r, message=FALSE}
+```{r, message=FALSE, echo=FALSE}
 library(india.air)
 library(tidyverse)
 library(lubridate)
 library(RColorBrewer)
 library(viridis)
 ```
+
 
 ```{r, echo=FALSE}
 # wranngling
@@ -67,6 +56,29 @@ ggplot(data = three_cities, mapping = aes(x = date,
   labs(color = "City",
        title = "PM2.5 levels in three Indian cities 2017-2019")
 ```
+
+
+## Installation
+
+The development version of `india.air` is available from [GitHub](https://github.com/) with:
+
+```{r, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("Reed-Math241/pkgGrpr")
+```
+
+## About the data
+
+```{r}
+head(india_air)
+```
+
+This data was made available by the [Central Pollution Control Board of India](https://cpcb.nic.in/) and compiled by [Vopani on kaggle](https://www.kaggle.com/rohanrao/air-quality-data-in-india).
+
+This data is within the public domain under the CC-0 license.
+
+## Visualization Examples
+
 
 ```{r, message=FALSE, echo=FALSE, warning=FALSE}
 ggplot(data = india_air, mapping = aes(x = date,
