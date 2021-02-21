@@ -139,7 +139,7 @@ ggplot(mapping = aes(x = date,
   geom_line(size = 0.7,
             alpha = 0.9,
             color = "black") +
-  theme_minimal() +
+  theme_bw() +
   theme(legend.position = "top",
         axis.title.x = element_blank()) +
   scale_y_continuous(expand = c(0, 0),
@@ -150,7 +150,7 @@ ggplot(mapping = aes(x = date,
   annotate("rect", xmin = mdy("7/9/2018"),                #background of key
            xmax = mdy("10/13/2018"),
            ymin = 1080, ymax = 1800,
-           fill = "white") +
+           fill = "white", color = "grey20") +
   annotate("text", x = mdy("8/27/2018"),
            y = 1750, label = "AQI Bucket",
            color = "grey20") +
