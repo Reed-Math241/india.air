@@ -15,38 +15,34 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Insert Package Name
+# india.air
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of XXX is to ...
+The goal of `india.air` is to make Indian air pollution data easily available for analysis and visualization in R.
 
 ## Installation
 
 The development version of XXX is available from [GitHub](https://github.com/) with:
 
-``` r
+```{r, eval=FALSE}
 # install.packages("devtools")
-devtools::install_github("Reed-Math241/pkgDemo")
+devtools::install_github("Reed-Math241/pkgGrpr")
 ```
-## Example
 
-
-```{r example}
-library(india.air)
-```
 
 ## Graphs
 
 ```{r, message=FALSE}
+library(india.air)
 library(tidyverse)
 library(lubridate)
 library(RColorBrewer)
 library(viridis)
 ```
 
-```{r}
+```{r, echo=FALSE}
 # wranngling
 three_cities <- india_air %>%
   filter(city %in% c("Mumbai",
@@ -59,17 +55,35 @@ three_cities <- india_air %>%
 ggplot(data = three_cities, mapping = aes(x = date,
                                        y = PM2.5,
                                        color = city)) +
-  geom_line(size = 1,
+  geom_line(size = 0.8,
             alpha = 0.7) +
-  xlim(mdy("1/1/2019"), mdy("1/1/2020")) +
+  xlim(mdy("1/1/2017"), mdy("12/31/2019")) +
   theme_minimal() +
-  theme(legend.position = "bottom",
+  theme(legend.position = "top",
         axis.title.x = element_blank()) +
   scale_y_continuous(limits = c(0, 610),
                      expand = c(0, 0)) +
   scale_color_brewer(palette = "Accent") +
   labs(color = "City",
-       title = "PM2.5 Levels in Chennai, Delhi, and Mumbai during 2019")
+       title = "PM2.5 levels in three Indian cities 2017-2019")
+```
+
+```{r, message=FALSE, echo=FALSE, warning=FALSE}
+ggplot(data = india_air, mapping = aes(x = date,
+                                       y = NOx,
+                                       color = city)) +
+  geom_line(size = 0.8,
+            alpha = 0.7) +
+  xlim(mdy("1/1/2019"), mdy("1/31/2019")) +
+  theme_minimal() +
+  theme(legend.position = "top",
+        axis.title.x = element_blank()) +
+  scale_y_continuous(limits = c(0, 200),
+                     expand = c(0, 0)) +
+  scale_color_brewer(palette = "Accent") +
+  labs(color = "City",
+       title = "NOx levels in six Indian cities January 2019",
+       y = "NOx (ppm)")
 ```
 
 

@@ -3,13 +3,14 @@
 
 <!-- You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.  -->
 
-# Insert Package Name
+# india.air
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-The goal of XXX is to …
+The goal of `india.air` is to make Indian air pollution data easily
+available for analysis and visualization in R.
 
 ## Installation
 
@@ -18,30 +19,19 @@ The development version of XXX is available from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("Reed-Math241/pkgDemo")
-```
-
-## Example
-
-``` r
-library(india.air)
+devtools::install_github("Reed-Math241/pkgGrpr")
 ```
 
 ## Graphs
 
 ``` r
+library(india.air)
 library(tidyverse)
 library(lubridate)
 library(RColorBrewer)
 library(viridis)
 ```
 
-``` r
-# wranngling
-three_cities <- india_air %>%
-  filter(city %in% c("Mumbai",
-                     "Delhi",
-                     "Chennai"))
-```
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
