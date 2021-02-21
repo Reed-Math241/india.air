@@ -66,3 +66,60 @@ time. For example,
 `india.air` is also great for comparing pollution among cities:
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+
+You can also easily produce summary stats of air pollution in India
+using `india.air`:
+
+``` r
+#How many days in 2019 was each city's AQI higher than 100 (the maximum "satisfactory" AQI)?
+india_air %>%
+  filter(date >= mdy("1/1/2019") & date <= mdy("12/31/2019")) %>%
+  group_by(city) %>%
+  count(AQI > 100)
+#> # A tibble: 12 x 3
+#> # Groups:   city [6]
+#>    city      `AQI > 100`     n
+#>    <chr>     <lgl>       <int>
+#>  1 Ahmedabad TRUE          352
+#>  2 Ahmedabad NA             13
+#>  3 Chennai   FALSE         218
+#>  4 Chennai   TRUE          147
+#>  5 Delhi     FALSE          43
+#>  6 Delhi     TRUE          322
+#>  7 Hyderabad FALSE         201
+#>  8 Hyderabad TRUE          164
+#>  9 Lucknow   FALSE          75
+#> 10 Lucknow   TRUE          290
+#> 11 Mumbai    FALSE         212
+#> 12 Mumbai    TRUE          153
+
+#What was the average Ozone concentration in each city in 2019?
+india_air %>%
+  filter(date >= mdy("1/1/2019") & date <= mdy("12/31/2019")) %>%
+  group_by(city) %>%
+  summarise(meanO3 = mean(O3, na.rm = TRUE))
+#> # A tibble: 6 x 2
+#>   city      meanO3
+#> * <chr>      <dbl>
+#> 1 Ahmedabad   46.6
+#> 2 Chennai     35.2
+#> 3 Delhi       38.9
+#> 4 Hyderabad   29.0
+#> 5 Lucknow     32.2
+#> 6 Mumbai      28.9
+
+#What was the average carbon monoxide concentration in each city in 2018?
+india_air %>%
+  filter(date >= mdy("1/1/2018") & date <= mdy("12/31/2018")) %>%
+  group_by(city) %>%
+  summarise(meanCO = mean(CO, na.rm = TRUE))
+#> # A tibble: 6 x 2
+#>   city      meanCO
+#> * <chr>      <dbl>
+#> 1 Ahmedabad 33.2  
+#> 2 Chennai    0.870
+#> 3 Delhi      1.41 
+#> 4 Hyderabad  0.622
+#> 5 Lucknow    1.04 
+#> 6 Mumbai     1.57
+```
