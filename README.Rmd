@@ -40,7 +40,7 @@ three_cities <- india_air %>%
 ```
 
 
-```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.retina = 3}
+```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.retina = 4}
 ggplot(data = three_cities, mapping = aes(x = date,
                                           y = PM2.5,
                                           color = city)) +
@@ -88,7 +88,7 @@ The dataset contains air pollution data for six Indian cities between the years 
 
 `india.air` is great for visualizing patterns in air pollution over time. For example,
 
-```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.retina = 3}
+```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.retina = 4}
 india_air %>%
   filter(city == "Delhi") %>%
 ggplot(mapping = aes(x = date,
@@ -106,7 +106,7 @@ ggplot(mapping = aes(x = date,
   labs(title = "NOx concentrations in Delhi, 2017-2019")
 ```
 
-```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.retina = 3}
+```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.retina = 4}
 india_air %>%
   filter(city == "Ahmedabad",
          date >= mdy("1/1/2018") & date <= mdy("12/30/2018")) %>%
@@ -201,7 +201,7 @@ ggplot(mapping = aes(x = date,
 
 `india.air` is also great for comparing pollution among cities:
 
-```{r, message=FALSE, echo=FALSE, warning=FALSE}
+```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.retina = 4}
 ggplot(data = india_air, mapping = aes(x = date,
                                        y = PM2.5,
                                        color = city)) +
