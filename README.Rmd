@@ -45,7 +45,7 @@ ggplot(data = three_cities, mapping = aes(x = date,
                                           y = PM2.5,
                                           color = city)) +
   geom_line(size = 0.7,
-            alpha = 0.7) +
+            alpha = 0.8) +
   xlim(mdy("1/1/2017"), mdy("12/31/2019")) +
   theme_minimal() +
   theme(legend.position = "top",
