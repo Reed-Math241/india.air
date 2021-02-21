@@ -44,6 +44,4 @@ three_cities <- india_air %>%
                      "Chennai"))
 ```
 
-    #> Warning: Removed 4929 row(s) containing missing values (geom_path).
-
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />

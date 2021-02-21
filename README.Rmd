@@ -55,7 +55,7 @@ three_cities <- india_air %>%
 ```
 
 
-```{r, message=FALSE, echo=FALSE}
+```{r, message=FALSE, echo=FALSE, warning=FALSE}
 ggplot(data = three_cities, mapping = aes(x = date,
                                        y = PM2.5,
                                        color = city)) +
