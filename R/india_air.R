@@ -2,7 +2,7 @@
 #'
 #' A variety of air pollution measurements by city and date across India for the years of 2015-2020. Not all measurements were collected in all cities on all days. Public domain CC0.
 #'
-#' @format A dataframe with 12051 rows and 14 variables:
+#' @format A tibble with 12051 rows and 14 variables:
 #' \describe{
 #'   \item{city}{City the measurement was taken in (character) (Delhi, Hyderabad, Lucknow, Bengluru, Chennai, Ahmedabad, Mumbai)}
 #'   \item{date}{Y-M-D date variable (date)}
