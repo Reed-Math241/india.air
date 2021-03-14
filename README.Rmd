@@ -66,7 +66,7 @@ The development version of `india.air` is available from [GitHub](https://github
 
 ```{r, eval=FALSE}
 # install.packages("devtools")
-devtools::install_github("Reed-Math241/pkgGrpr")
+devtools::install_github("Reed-Math241/india.air")
 ```
 
 ## About the data
